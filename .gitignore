@@ -1,0 +1,4 @@
+# I add my sensitive info so git will ignore this file
+.env
+# I also want to ignore node modules, biggest folder in history
+node_modules
