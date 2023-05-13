@@ -1,12 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const flightsCtrl = require('../controllers/flights');
+const flightsCtrl = require('../controllers/flights' );
 
-//GET
+//GET 
+// this route is /flights/new
 router.get('/new', flightsCtrl.new);
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
 
+router.get('/', flightsCtrl.index)
+
+// POST flight creation 
+// this route is /flights
+router.post('/', flightsCtrl.create)
+
+
+  
 module.exports = router;

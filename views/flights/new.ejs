@@ -1,7 +1,7 @@
-%- include('../partials/header') %>
+
 
 <h2>Enter a Flight</h2>
-<form action="/flights" method="POST">
+<form action="/flights/new" method="POST">
   <label>Airline:
     <input type="text" name="title">
   </label><br>
@@ -9,7 +9,7 @@
     <input name="apt">
   </label><br>
   <label>Flight Number
-    <select type="number" name="flightNum">
+    <input type="text" name="flightNum"> 
     
     </select>
   </label><br>
@@ -21,4 +21,3 @@
 </form>
 <p><%= errorMsg %></p>
 
-<%- include('../partials/footer') %>
