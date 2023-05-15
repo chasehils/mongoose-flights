@@ -6,11 +6,12 @@ const flightsCtrl = require('../controllers/flights' );
 // this route is /flights/new
 router.get('/new', flightsCtrl.new);
 
-router.get('/', flightsCtrl.index)
+router.get('/', flightsCtrl.index);
+router.get('/:id', flightsCtrl.show);
 
 // POST flight creation 
 // this route is /flights
-router.post('/', flightsCtrl.create)
+router.post('/flights', flightsCtrl.create);
 
 
   

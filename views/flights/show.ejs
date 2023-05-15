@@ -1,0 +1,50 @@
+<%- include('../partials/header') %>
+
+<section id="show-page">
+  <div>Airline: </div>
+  <div><%= flight.airline %></div>
+  <div>Airport: </div>
+  <div><%= flight.airport %></div>
+
+
+
+  <!-- end cast list -->
+</section>
+<!-- add to cast form below this comment -->
+<form id="add-per-to-cast" action="/flights/<%= flight._id %>/performers" method="POST">
+  <select name="performerId">
+    <!-- Emit an option for each performer -->
+    <%- performers.map(p => 
+      `<option value="${p._id}">${p.name}</option>`
+    ).join('') %>
+  </select>
+  <button type="submit">Add to Cast</button>
+</form>
+<div id="show">
+  <table>
+      <thead>
+          <tr>
+              <th>Airline</th>
+              <th>Flight #</th>
+              <th>Airport</th>
+              <th>Departs</th>
+              <th>Delete</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr <%= flight.past ? "class=past" : '' %>>
+             <td><%= flight.airline %></td>
+              <td><%= flight.flightNo %></td>
+              <td><%= flight.airport %></td>
+              <td>
+                  <form action="/flights/<%=flight._id%>?_method=DELETE" method="POST"><input type="submit" value="X" class="Btn"></form>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+
+
+  
+<%- include('../partials/footer') %>

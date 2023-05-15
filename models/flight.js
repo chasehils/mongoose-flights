@@ -9,10 +9,26 @@ const Schema = mongoose.Schema;
 // we define propertiers(aka paths) and assign data types to those properties
 
 const flightSchema = new Schema({
-  airline: String, //enum 'American', 'Delta'
-  airport: String, // enum 'ATL', 'BOS', 'SFO', 'CUN', 'ECP'
-  flightNo: Number, // 10-9999
-  departure: Date     //
+  airline: {
+    type: String,
+    enum: ['American Airlines', 'Delta', 'JetBlue', 'Spirit', 'United Airlines']
+  },
+  airport: {
+    type: String,
+    enum: ['ATL', 'BOS', 'CUN', 'SFO', 'ECP']
+  }, 
+  flightNo: {
+    type: Number,
+    required: true,
+    min: 10,
+    max: 9999
+  }, 
+  departure: {
+    type: Date, default: function () {
+      const newDate = new Date();
+      return newDate.setFullYear(newDate.getFullYear() + 1)
+    }
+  },
 }, {
   timestamps: true
 });

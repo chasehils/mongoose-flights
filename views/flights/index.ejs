@@ -1,21 +1,24 @@
 <%- include('./partials/header') %>
 
-<table>
+<table id="list">
   <thead>
     <tr>
       <th>Airline</th>
-      <th>Airport</th>
-      <th>flightNum</th>
-      <th>Departure</th>
-    </tr>
+      <th>Airport</th> 
+      <th>Flight </th>
   </thead>
   <tbody>
-    <% flights.forEach(function(flight) {%> 
-        <tr>
-          <td><%= flight.airline%></td>
-          <td><%= flight.airport%></td>
+    <% flights.forEach(function(f) { %>
+      <tr>
+         <td><%= f.airline %></td>
+         <td><%= f.airport %></td>
+        <td><a href="./flights/<%= f._id %>">DETAILS</a></td>
+        <td>
+          <% const dt=f.Departure; const departsDate=dt.toISOString().slice(0, 16).replace("T", " " ); %>
+            <%= Departure %>
+        </td>
         </tr>
-      <% }) %>
+        <% }); %>
   </tbody>
 </table>
 
